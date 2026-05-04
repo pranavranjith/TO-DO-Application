@@ -4,6 +4,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 const taskroutes = require("./routes/taskRoutes")
+const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 
@@ -15,6 +16,7 @@ mongoose.connect(process.env.MONGO_URI)
 .catch((err)=> console.log(err));
 
 app.use("/tasks",taskroutes);
+app.use("/auth",authRoutes);
 
 app.get("/",(req,res)=>{
     res.send("API is running...");
